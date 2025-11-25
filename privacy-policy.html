@@ -1,16 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Privacy Policy </title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Roamly's Privacy Policy </h1>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roamly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    nav {
+      width: 100%;
+      background: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .logo a {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #E27606;
+      text-decoration: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .menu {
+      display: flex;
+      gap: 40px;
+    }
+
+    .menu a {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    color: black
+    }
+
+    .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #177D83;
+    width: 0%;
+    transition: width 0.3s ease;
+    }
+
+    .menu a:hover::after {
+    width: 100%;
+    animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+    }
+
+    @keyframes heartbeat116 {
+    0%, 100% {
+        width: 100%;
+    }
+    50% {
+        width: 60%;
+    }
+    }
+
+    .app-btn {
+      padding: 10px 18px;
+      background: #000;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .app-btn:hover {
+      opacity: 0.8;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: white;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      padding: 20px;
+      opacity: 0.6;
+      margin-top: 50px;
+    }
+
+ 
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 15px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    /* Mobile responsive */
+    @media(max-width: 850px) {
+      .menu {
+        display: none; /* hide desktop menu */
+      }
+      .app-btn {
+        margin-left: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><a href="./index.html">Roamly</a></div>
+
+    <div class="menu">
+      <a href="#">About us</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./terms-of-service.html">Terms of Service</a>
+      <a href="./support.html">Help Center </a>
+    </div>
+
+    <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+  </nav>
+  <div class="container">
+   <h1> Privacy Policy</h1>
+
+   <p><strong>Effective on the date you first accept these Terms.</strong></p>
+
+   <p>Roamly (“we,” “us,” or “our”) is operated by Allen Greshen Koch and Nirma Shemani Perera, doing business as Roamly. This Privacy Policy explains how we handle information when you use the Roamly mobile application (“App” or “Service”).</p>
+
+   <p><strong>Operating location for contact purposes:</strong> Japan<br>
+   <strong>Email:</strong> ai.roamly@gmail.com</p>
+
+   <p>By using Roamly, you agree to the practices described in this Privacy Policy.</p>
+
+   <h2>1. Information We Collect</h2>
+   <p>Currently, Roamly does not collect any personal information beyond what you provide in your account. We do not track analytics, location, or behavior in the App at this time.</p>
+
+   <p>User-provided information includes:</p>
+   <ul>
+     <li>Account email and login credentials</li>
+     <li>Trip titles, itinerary details, and notes entered manually or via AI</li>
+   </ul>
+
+   <p>We do not automatically share your itineraries, reviews, or notes with other users. Any sharing outside the App is entirely your choice.</p>
+
+   <h2>2. AI-Generated Content</h2>
+   <p>Roamly may generate itineraries or recommendations using AI. By using the App, you acknowledge that:</p>
+   <ul>
+     <li>AI-generated content may be inaccurate or incomplete</li>
+     <li>Roamly does not guarantee the safety, availability, or suitability of AI-generated suggestions</li>
+     <li>Users are responsible for verifying all information independently before acting on it</li>
+   </ul>
+
+   <h2>3. Data Retention & Deletion</h2>
+   <p>You can request deletion of your account and associated data at any time by emailing us at <strong>ai.roamly@gmail.com</strong>.</p>
+   <ul>
+     <li><strong>Deletion timeline:</strong> Requests are processed within 30 days.</li>
+     <li><strong>Data removal:</strong> All personal data and itineraries are permanently deleted and cannot be recovered.</li>
+   </ul>
+
+   <p>Roamly does not retain any user content after deletion, except where required for legal compliance.</p>
+
+   <h2>4. Use of Data</h2>
+   <p>We use your account data only to provide the App’s services, including:</p>
+   <ul>
+     <li>Storing your itineraries</li>
+     <li>Enabling AI-generated trip recommendations</li>
+     <li>Operating the App and maintaining security</li>
+   </ul>
+
+   <p>We do not sell, rent, or share your personal information for marketing purposes. Any promotional use of itineraries (such as screenshots for social media or website) occurs only if you explicitly opt-in.</p>
+
+   <h2>5. Security</h2>
+   <p>We implement reasonable technical measures to protect your data. However, no digital system is completely secure. By using Roamly, you acknowledge the inherent risks of storing and transmitting information online.</p>
+
+   <h2>6. Children’s Privacy</h2>
+   <p>Roamly is intended for users 18 years and older. We do not knowingly collect personal information from children. If we learn we collected data from a user under 18, we will delete it promptly.</p>
+
+   <h2>7. Changes to this Privacy Policy</h2>
+   <p>We may update this Privacy Policy from time to time. When changes occur, you must re-accept the updated terms to continue using the App. We will notify you of material changes via the App or email.</p>
+
+   <h2>8. Contact Us</h2>
+   <p>If you have questions or requests regarding your data, AI-generated content, or account deletion, you can contact us at:</p>
+   <p><strong>Email:</strong> ai.roamly@gmail.com<br>
+   <strong>Operating location:</strong> Japan<br>
+   <strong>Legal entity:</strong> Allen Greshen Koch and Nirma Shemani Perera, doing business as Roamly</p>
+ </div>
+
+ <footer>
+   © Roamly — Privacy Policy
+ </footer>
+</body>
 </html>
