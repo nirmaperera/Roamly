@@ -1,16 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Terms of Service</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Roamly's Terms of Service </h1>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roamly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    nav {
+      width: 100%;
+      background: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .logo a {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #E27606;
+      text-decoration: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .menu {
+      display: flex;
+      gap: 40px;
+    }
+
+    .menu a {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    color: black
+    }
+
+    .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #177D83;
+    width: 0%;
+    transition: width 0.3s ease;
+    }
+
+    .menu a:hover::after {
+    width: 100%;
+    animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+    }
+
+    @keyframes heartbeat116 {
+    0%, 100% {
+        width: 100%;
+    }
+    50% {
+        width: 60%;
+    }
+    }
+
+    .app-btn {
+      padding: 10px 18px;
+      background: #000;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .app-btn:hover {
+      opacity: 0.8;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: white;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 35px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      padding: 20px;
+      opacity: 0.6;
+      margin-top: 50px;
+    }
+
+ 
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 15px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+    }
+
+    /* Mobile responsive */
+    @media(max-width: 850px) {
+      .menu {
+        display: none; /* hide desktop menu */
+      }
+      .app-btn {
+        margin-left: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo"><a href="./index.html">Roamly</a></div>
+
+    <div class="menu">
+      <a href="#">About us</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./terms-of-service.html">Terms of Service</a>
+      <a href="./support.html">Help Center </a>
+    </div>
+
+    <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+  </nav>
+  <div class="container">
+    <h1>Roamly Terms of Service</h1>
+    <p><strong>Effective Date:</strong> The date you first accept these Terms.</p>
+    <p>These Terms of Service (“Terms”) govern your use of the Roamly mobile application and related services (“Roamly,” “the App,” or “the Service”). Roamly is operated by Allen Greshen Koch and Nirma Shemani Perera, doing business as Roamly (“we,” “us,” or “our”). By creating an account, accessing, or using Roamly, you agree to be legally bound by these Terms. If you do not agree, you may not use the App.</p>
+
+    <h2>1. Eligibility and Accounts</h2>
+    <ul>
+        <li>You must be at least 18 years old to use Roamly.</li>
+        <li>An account is required to create and view itineraries. Some read-only features may be available without an account.</li>
+        <li>You are responsible for keeping your login credentials confidential and for all activity under your account.</li>
+    </ul>
+
+    <h2>2. Use of the Service</h2>
+    <p>Roamly allows you to plan and organize travel itineraries, including generating itineraries using AI. You agree not to use the App:</p>
+    <ul>
+        <li>For unlawful purposes</li>
+        <li>To attempt to interfere with the operation or security of the App</li>
+        <li>To reverse-engineer, modify, or copy the App or its data</li>
+        <li>To upload harmful code or disrupt service performance</li>
+    </ul>
+    <p>We may update or change features at any time without notice.</p>
+
+    <h2>3. User Content</h2>
+    <ul>
+        <li>You may add text and itinerary data to Roamly (“User Content”).</li>
+        <li>You retain full ownership of your User Content.</li>
+        <li>User Content remains private by default and is not visible to other users unless you explicitly share it.</li>
+        <li>We do not use User Content for promotional purposes unless you opt-in.</li>
+    </ul>
+
+    <h2>4. License You Grant to Roamly</h2>
+    <p>To operate the App, you grant us a limited, non-exclusive, and revocable license to store and display your User Content only for the purpose of providing the Service to you. You may revoke this license at any time by deleting your User Content or your account.</p>
+
+    <h2>5. AI-Generated Content</h2>
+    <ul>
+        <li>Some content may be generated using artificial intelligence.</li>
+        <li>AI may produce inaccurate or incomplete information.</li>
+        <li>We do not guarantee the accuracy, reliability, safety, or suitability of AI-generated itineraries.</li>
+        <li>You are responsible for independently verifying all travel information before relying on it.</li>
+    </ul>
+
+    <h2>6. No Travel Guarantees</h2>
+    <p>Roamly does not guarantee availability, safety, cost, operational hours, accessibility, or quality of any destinations, activities, or services referenced in any itinerary. All travel decisions and resulting risks remain solely your responsibility.</p>
+
+    <h2>7. Termination</h2>
+    <ul>
+        <li>We may suspend or terminate your account if you violate these Terms, we believe it is necessary to protect the App or users, or if required by law.</li>
+        <li>Reasonable efforts will be made to notify you before termination when feasible.</li>
+        <li>Upon termination, we are not obligated to return or recover your data. You are responsible for exporting or saving your itineraries before account deletion.</li>
+    </ul>
+
+    <h2>8. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, Roamly and its owners, affiliates, partners, and employees are not liable for any direct, indirect, incidental, special, consequential, or punitive damages, including personal injury, loss of data, travel delays or costs, lost profits, or emotional/financial loss. If applicable law does not allow full limitation, liability is limited to the amount paid by you to use the Service, if any.</p>
+
+    <h2>9. Disclaimers</h2>
+    <p>Roamly is provided “as is” and “as available”, without warranties of any kind. We do not warrant uninterrupted service, error-free data, future availability, or that the App will meet your expectations or performance needs.</p>
+
+    <h2>10. No Class Actions</h2>
+    <p>You agree that disputes will be resolved only on an individual basis. Class actions, class arbitrations, or representative proceedings are not allowed.</p>
+
+    <h2>11. Governing Law and Jurisdiction</h2>
+    <p>These Terms are governed by the laws of the United States and the State of New York. All disputes must be brought exclusively in the state or federal courts located in New York State, and you consent to their personal jurisdiction.</p>
+
+    <h2>12. Changes to These Terms</h2>
+    <p>We may update these Terms from time to time. You will be required to re-accept the updated Terms to continue using the App. If you do not agree, you must stop using the App and may request account deletion.</p>
+
+    <h2>13. Contact Information</h2>
+    <p>Roamly is operated by Allen Greshen Koch and Nirma Shemani Perera, doing business as Roamly.<br>
+    Operating location (for contact purposes): Japan<br>
+    Email: <a href="mailto:ai.roamly@gmail.com">ai.roamly@gmail.com</a></p>
+ </div>
+
+ <footer>
+   © Roamly — Terms of Service 2025
+ </footer>
+</body>
 </html>
