@@ -30,8 +30,8 @@
       letter-spacing: -0.5px;
       color: #E27606;
       text-decoration: none;
-        position: relative;
-        overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
 
     .menu {
@@ -40,35 +40,44 @@
     }
 
     .menu a {
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    color: black
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      color: black;
     }
 
     .menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: #177D83;
-    width: 0%;
-    transition: width 0.3s ease;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #177D83;
+      width: 0%;
+      transition: width 0.3s ease;
     }
 
     .menu a:hover::after {
-    width: 100%;
-    animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+      width: 100%;
+      animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
     }
 
     @keyframes heartbeat116 {
-    0%, 100% {
+      0%, 100% {
         width: 100%;
-    }
-    50% {
+      }
+      50% {
         width: 60%;
+      }
     }
+
+    /* Active nav item */
+    .menu a.active {
+      font-weight: 500; /* bold */
+      color: #177D83
+    }
+    .menu a.active::after {
+      width: 100%; /* underline stays visible */
     }
 
     .app-btn {
@@ -136,7 +145,6 @@
       margin-top: 50px;
     }
 
- 
     @media (max-width: 600px) {
       .container {
         padding: 25px 15px;
@@ -163,7 +171,7 @@
     <div class="logo"><a href="./index.html">Roamly</a></div>
 
     <div class="menu">
-      <a href="#">About us</a>
+      <a href="./aboutUs.html">About us</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
       <a href="./terms-of-service.html">Terms of Service</a>
       <a href="./support.html">Help Center </a>
@@ -171,6 +179,7 @@
 
     <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
   </nav>
+
   <div class="container">
     <h1>Roamly Terms of Service</h1>
     <p><strong>Effective Date:</strong> The date you first accept these Terms.</p>
@@ -241,10 +250,24 @@
     <p>Roamly is operated by Allen Greshen Koch and Nirma Shemani Perera, doing business as Roamly.<br>
     Operating location (for contact purposes): Japan<br>
     Email: <a href="mailto:ai.roamly@gmail.com">ai.roamly@gmail.com</a></p>
- </div>
+  </div>
 
- <footer>
-   © Roamly — Terms of Service 2025
- </footer>
+  <footer>
+    © Roamly — Terms of Service 2025
+  </footer>
+
+  <!-- JS for automatic active nav highlighting -->
+  <script>
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".menu a");
+
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute("href").split("/").pop();
+      if(linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+
 </body>
 </html>
