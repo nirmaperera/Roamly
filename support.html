@@ -5,12 +5,427 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Help Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <style>
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    nav {
+      width: 100%;
+      background: #ffffff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eaeaea;
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+    }
+
+    .logo a {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #E27606;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu {
+      display: flex;
+      gap: 40px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      color: black;
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #177D83;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+      animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+    }
+
+    @keyframes heartbeat116 {
+      0%, 100% {
+        width: 100%;
+      }
+      50% {
+        width: 60%;
+      }
+    }
+
+    /* Active nav item */
+    .menu a.active {
+      font-weight: 500; /* bold */
+      color: #177D83
+    }
+    .menu a.active::after {
+      width: 100%; /* underline stays visible */
+    }
+  
+      @keyframes heartbeat116 {
+        0%, 100% {
+          width: 100%;
+        }
+        50% {
+          width: 60%;
+        }
+      }
+
+      /* Active nav item */
+      .menu a.active {
+        font-weight: 500;
+        color: #177D83;
+      }
+
+      .menu a.active::after {
+        width: 100%;
+      }
+  
+      .app-btn {
+        padding: 10px 18px;
+        background: #000;
+        color: #fff;
+        border-radius: 8px;
+        font-size: 15px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: opacity 0.2s ease;
+      }
+
+      .app-btn:hover {
+        opacity: 0.8;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+        color: #222;
+        line-height: 1.7;
+      }
+
+      .hero {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('./heroSupport.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .hero p {
+        font-size: 1rem;
+        max-width: 600px;
+        opacity: 0.9;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 100px;
+      }
+
+      .faq-intro h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .faq-intro p {
+        font-size: 0.95rem;
+        color: #4a4a4a;
+        margin-bottom: 20px;
+      }
+
+      .faq-link {
+        color: #E27606;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .faq-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Accordion styling */
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      details {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 20px 0;
+        cursor: pointer;
+      }
+
+      summary {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.05rem;
+        color: #222;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: '+';
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-left: 10px;
+        transition: transform 0.2s ease;
+      }
+
+      details[open] summary::after {
+        transform: rotate(45deg);
+      }
+
+      /* Smooth accordion animation */
+      .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+      }
+
+      details[open] .faq-content {
+        max-height: 500px;
+      }
+
+      .faq-answer {
+        padding-top: 15px;
+        color: #555;
+        font-size: 0.95rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      details[open] .faq-answer {
+        opacity: 1;
+      }
+
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      padding: 20px;
+      opacity: 0.6;
+      margin-top: 50px;
+    }
+
+      /* Mobile responsive */
+      @media(max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+      }
+
+      @media(max-width: 850px) {
+        .menu {
+          display: none;
+        }
+        .app-btn {
+          margin-left: auto;
+        }
+      }
+    </style>
   </head>
   <body>
+    <nav>
+      <div class="logo"><a href="./index.html">Roamly</a></div>
+  
+      <div class="menu">
+        <a href="./aboutUs.html">About us</a>
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./terms-of-service.html">Terms of Service</a>
+        <a href="./support.html">Help Center </a>
+      </div>
+  
+      <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+    </nav>
+
     <main>
-        <h1>Welcome to Roamly's Help Center</h1>
+      <header class="hero">
+        <h1>Welcome to the Roamly Help Center!</h1>
+        <p>Whether you're just getting started or need specific answers, we're here to help. Explore our FAQs, step-by-step guides, and expert tips designed to keep your journey with us moving smoothly.</p>
+      </header>
+
+      <main class="container">
+
+        <section class="faq-intro">
+          <h2>FAQS</h2>
+          <p>Have questions about your next adventure? Explore Roamly's FAQs to quickly find solutions and tips for planning, customizing, and managing your trips.</p>
+
+          <p>If you would like to request a 🚀 feature, 🪲 report a bug, or have any further questions reach us at <a href="mailto:ai.roamly@gmail.com" class="faq-link">ai.roamly@gmail.com</a>.</p>
+        </section>
+
+        <section class="faq-list">
+
+          <details>
+            <summary>What is Roamly?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Roamly is a travel app that helps you build trips your way — use AI, start from scratch, or pull from ready-made itineraries. Customize every detail and see your entire journey come to life on an interactive map.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>How do I create a trip?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Open the app, tap Plan Trip, and choose how you want to start — use Roamly AI, build from scratch, or pick an itinerary template. You can edit anything at any time, no matter how you begin. Add custom checklists along the way so you never leave anything behind.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Can I share my trips with friends?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                You can download or share your trips externally. In-app sharing and collaborating isn’t available yet, but it’s coming in a future update.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Do I need an account to use Roamly?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Yes, an account lets you build and save your trips, checklists, and preferences across all your devices.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Does Roamly collect my personal data?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                We do not collect location data or analytics.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Can I use Roamly offline?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Yes, you can view your trips offline. You’ll need an internet connection for full features like building or updating trips.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>How do I delete my account or data?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                You can delete your account by going to Profile → Personal Details → Delete Account, or by emailing a deletion request. We process all requests within 30 days. Deleting your account permanently erases all your trip data — we don’t retain it.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Is Roamly free?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Yes, Roamly is free!
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Which countries or regions does Roamly support?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Roamly can be used worldwide. Destination suggestions and templates cover major travel hubs globally, and you can manually add any location.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Who can I contact for support?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                You can reach us at ai.roam@roamly.com for any questions, feedback, or troubleshooting.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>How do I report a bug or provide feedback?</summary>
+            <div class="faq-content">
+              <div class="faq-answer">
+                Use the Feedback option in the app or email us. We welcome all suggestions to improve Roamly.
+              </div>
+            </div>
+          </details>
+
+        </section>
+      </main>
     </main>
+    <footer>
+      © 2025 Roamly. All rights reserved.
+    </footer>
+
+    <!-- JS for automatic active nav highlighting -->
+    <script>
+      const currentPage = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".menu a");
+
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href").split("/").pop();
+        if(linkPage === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    </script>
   </body>
 </html>
