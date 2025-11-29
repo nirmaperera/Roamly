@@ -14,18 +14,27 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    body {
+      font-family: "Montserrat", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
     nav {
       width: 100%;
       background: #ffffff;
       padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #eaeaea;
       position: sticky;
       top: 0;
-      overflow: hidden;
-      z-index: 1;
+      z-index: 1000;
     }
 
     .logo a {
@@ -34,20 +43,25 @@
       letter-spacing: -0.5px;
       color: #E27606;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
+    }
+
+    .nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
     }
 
     .menu {
       display: flex;
       gap: 40px;
+      transition: right 0.3s ease;
     }
 
     .menu a {
       text-decoration: none;
+      color: black;
       position: relative;
       overflow: hidden;
-      color: black;
     }
 
     .menu a::after {
@@ -63,25 +77,21 @@
 
     .menu a:hover::after {
       width: 100%;
-      animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+      animation: heartbeat 1.5s ease-in-out 0.3s infinite;
     }
 
-    @keyframes heartbeat116 {
-      0%, 100% {
-        width: 100%;
-      }
-      50% {
-        width: 60%;
-      }
+    @keyframes heartbeat {
+      0%,100% { width: 100%; }
+      50% { width: 60%; }
     }
 
-    /* Active nav item */
     .menu a.active {
-      font-weight: 500; /* bold */
+      font-weight: 500;
       color: #177D83;
     }
+
     .menu a.active::after {
-      width: 100%; /* underline stays visible */
+      width: 100%;
     }
 
     .app-btn {
@@ -90,8 +100,8 @@
       color: #fff;
       border-radius: 8px;
       font-size: 15px;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
       transition: opacity 0.2s ease;
     }
 
@@ -99,16 +109,36 @@
       opacity: 0.8;
     }
 
-
-    body {
-      font-family: "Montserrat", sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fafafa;
-      color: #222;
-      line-height: 1.7;
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1100;
     }
 
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: #000;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Container for privacy content */
     .container {
       max-width: 900px;
       margin: 20px auto;
@@ -122,16 +152,16 @@
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 16px;
-      margin-bottom: 18px;
-    }
-
     h2 {
       font-size: 22px;
       font-weight: 600;
       margin-top: 35px;
       margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 18px;
     }
 
     ul {
@@ -151,22 +181,35 @@
       margin-top: 50px;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 25px 15px;
+    @media(max-width:850px){
+      .hamburger {
+        display: flex;
       }
-      h1 {
-        font-size: 26px;
-      }
-    }
 
-    /* Mobile responsive */
-    @media(max-width: 850px) {
-      .menu {
+      .app-btn.desktop {
         display: none;
       }
-      .app-btn {
-        margin-left: auto;
+
+      .menu {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 20px 20px 20px;
+        gap: 20px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .menu a.app-btn.mobile {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -176,14 +219,22 @@
   <nav>
     <div class="logo"><a href="./index.html">Roamly</a></div>
 
-    <div class="menu">
-      <a href="./aboutUs.html">About us</a>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      <a href="./terms-of-service.html">Terms of Service</a>
-      <a href="./support.html">Help Center </a>
+    <div class="nav-center">
+      <div class="menu" id="menu">
+        <a href="./aboutUs.html">About us</a>
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./terms-of-service.html">Terms of Service</a>
+        <a href="./support.html">Help Center</a>
+      </div>
     </div>
 
-    <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+    <a class="app-btn desktop" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 
   <div class="container">
@@ -245,21 +296,26 @@
     <p>If you have questions or requests regarding your data, AI-generated content, or account deletion, you can contact us at:</p>
     <p><strong>Email:</strong> ai.roamly@gmail.com<br>
     <strong>Operating location:</strong> Japan<br>
-    <strong>Legal entity:</strong> Roamly (operated by its founders) </p>
+    <strong>Legal entity:</strong> Roamly (operated by its founders)</p>
   </div>
 
   <footer>
     © 2025 Roamly. All rights reserved.
   </footer>
 
-  <!-- JS for automatic active nav highlighting -->
   <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+
     const currentPage = window.location.pathname.split("/").pop();
     const navLinks = document.querySelectorAll(".menu a");
-
     navLinks.forEach(link => {
-      const linkPage = link.getAttribute("href").split("/").pop();
-      if(linkPage === currentPage) {
+      if(link.getAttribute("href").split("/").pop() === currentPage) {
         link.classList.add("active");
       }
     });

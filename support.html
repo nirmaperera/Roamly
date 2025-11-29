@@ -16,6 +16,13 @@
       box-sizing: border-box;
       font-family: 'Montserrat', sans-serif;
     }
+    body {
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+        color: #222;
+        line-height: 1.7;
+    }
 
     nav {
       width: 100%;
@@ -41,9 +48,16 @@
       overflow: hidden;
     }
 
+    .nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
     .menu {
       display: flex;
       gap: 40px;
+      transition: right 0.3s ease;
     }
 
     .menu a {
@@ -121,16 +135,25 @@
         opacity: 0.8;
       }
 
-      body {
-        font-family: "Montserrat", sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #fafafa;
-        color: #222;
-        line-height: 1.7;
-      }
+       /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
 
-      .hero {
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: #000;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+  .hero {
         background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('./Assets/heroSupport.jpg');
         background-size: cover;
         background-position: center;
@@ -258,8 +281,7 @@
       margin-top: 50px;
     }
 
-      /* Mobile responsive */
-      @media(max-width: 768px) {
+   @media(max-width:850px){
         .container {
           grid-template-columns: 1fr;
           gap: 40px;
@@ -267,30 +289,67 @@
         .hero h1 {
           font-size: 1.8rem;
         }
+      .hamburger {
+        display: flex;
       }
 
-      @media(max-width: 850px) {
-        .menu {
-          display: none;
-        }
-        .app-btn {
-          margin-left: auto;
-        }
+      .app-btn.desktop {
+        display: none;
       }
+
+      .menu {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 20px 20px 20px;
+        gap: 20px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .menu a.app-btn.mobile {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
     </style>
   </head>
   <body>
     <nav>
       <div class="logo"><a href="./index.html">Roamly</a></div>
-  
-      <div class="menu">
-        <a href="./aboutUs.html">About us</a>
-        <a href="./privacy-policy.html">Privacy Policy</a>
-        <a href="./terms-of-service.html">Terms of Service</a>
-        <a href="./support.html">Help Center </a>
+
+      <div class="nav-center">
+        <div class="menu" id="menu">
+          <a href="./aboutUs.html">About us</a>
+          <a href="./privacy-policy.html">Privacy Policy</a>
+          <a href="./terms-of-service.html">Terms of Service</a>
+          <a href="./support.html">Help Center</a>
+        </div>
       </div>
-  
-      <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+
+      <a class="app-btn desktop" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
 
     <main>
@@ -418,15 +477,23 @@
 
     <!-- JS for automatic active nav highlighting -->
     <script>
+      const hamburger = document.getElementById('hamburger');
+      const menu = document.getElementById('menu');
+
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+
       const currentPage = window.location.pathname.split("/").pop();
       const navLinks = document.querySelectorAll(".menu a");
-
       navLinks.forEach(link => {
-        const linkPage = link.getAttribute("href").split("/").pop();
-        if(linkPage === currentPage) {
+        if(link.getAttribute("href").split("/").pop() === currentPage) {
           link.classList.add("active");
         }
       });
     </script>
+
+
   </body>
 </html>

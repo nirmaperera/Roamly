@@ -15,18 +15,21 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    body {
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
     nav {
       width: 100%;
       background: #ffffff;
       padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #eaeaea;
       position: sticky;
       top: 0;
-      overflow: hidden;
-      z-index: 1;
+      z-index: 1000;
     }
 
     .logo a {
@@ -35,20 +38,26 @@
       letter-spacing: -0.5px;
       color: #E27606;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
+    }
+
+    /* Center links on desktop */
+    .nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
     }
 
     .menu {
       display: flex;
       gap: 40px;
+      transition: right 0.3s ease;
     }
 
     .menu a {
       text-decoration: none;
+      color: black;
       position: relative;
       overflow: hidden;
-      color: black;
     }
 
     .menu a::after {
@@ -64,35 +73,32 @@
 
     .menu a:hover::after {
       width: 100%;
-      animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+      animation: heartbeat 1.5s ease-in-out 0.3s infinite;
     }
 
-    @keyframes heartbeat116 {
-      0%, 100% {
-        width: 100%;
-      }
-      50% {
-        width: 60%;
-      }
+    @keyframes heartbeat {
+      0%,100% { width: 100%; }
+      50% { width: 60%; }
     }
 
     /* Active nav item */
     .menu a.active {
-      font-weight: 500; /* bold */
+      font-weight: 500;
       color: #177D83;
     }
     .menu a.active::after {
-      width: 100%; /* underline stays visible */
+      width: 100%;
     }
 
+    /* CTA button */
     .app-btn {
       padding: 10px 18px;
       background: #000;
       color: #fff;
       border-radius: 8px;
       font-size: 15px;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
       transition: opacity 0.2s ease;
     }
 
@@ -100,6 +106,26 @@
       opacity: 0.8;
     }
 
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: #000;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* HERO / ABOUT SECTION STYLES */
     .about-section {
       background: url('./Assets/plane.png') no-repeat center top/cover;
       height: 750px;
@@ -108,7 +134,6 @@
     .about-textBox{
       position: relative;
       top: 220px;
-      height: auto;
       display: flex;
       flex-direction: column;
       max-width: 600px;
@@ -117,12 +142,10 @@
       text-align: left;
       color: #404040;
       background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    
+      border-radius: 20px;
     }
 
     .about-section h2 {
-      font-family: 'Montserrat', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 20px;
     }
@@ -159,12 +182,10 @@
       justify-content: space-evenly;
       height: 500px;
       width: max-content;
-      margin-left: 100px;
       color: #404040;
     }
 
     .vision-mission .text h3 {
-      font-family: 'Montserrat', sans-serif;
       color: #0f585c;
       margin-bottom: 10px;
     }
@@ -180,7 +201,6 @@
     }
 
     .values-section h3 {
-      font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
       margin-bottom: 20px;
       color: #404040;
@@ -194,11 +214,11 @@
     }
 
     .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1200px; /* increase from 1000px */
-    margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .value-card {
@@ -222,7 +242,6 @@
     }
 
     .value-card h4 {
-      font-family: 'Montserrat', sans-serif;
       margin-bottom: 10px;
       font-size: 1.2rem;
       color: #404040;
@@ -234,17 +253,26 @@
     }
 
     .asset-credit {
-    text-align: right;
-    font-size: 11px;
-    opacity: 0.6;
-    margin: 8px 20px 0 0;
-  }
+      text-align: right;
+      font-size: 11px;
+      opacity: 0.6;
+      margin: 8px 20px 0 0;
+    }
 
-  .asset-credit a {
-    color: inherit;
-    text-decoration: underline;
-  }
+    .asset-credit a {
+      color: inherit;
+      text-decoration: underline;
+    }
 
+    footer {
+      text-align: center;
+      font-size: 13px;
+      padding: 20px;
+      opacity: 0.6;
+      margin-top: 50px;
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
       .vision-mission {
         flex-direction: column;
@@ -254,31 +282,47 @@
         max-width: 100%;
       }
     }
-    footer {
-      text-align: center;
-      font-size: 13px;
-      padding: 20px;
-      opacity: 0.6;
-      margin-top: 50px;
-    }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 25px 15px;
+    @media(max-width:850px){
+      .hamburger {
+        display: flex;
       }
-      h1 {
-        font-size: 26px;
-      }
-    }
 
-    /* Mobile responsive */
-    @media(max-width: 850px) {
-      .menu {
+      .app-btn.desktop {
         display: none;
       }
-      .app-btn {
-        margin-left: auto;
+
+      .menu {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 20px 20px 20px;
+        gap: 20px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
       }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .menu a.app-btn.mobile {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
     }
   </style>
 </head>
@@ -286,25 +330,34 @@
 
   <nav>
     <div class="logo"><a href="./index.html">Roamly</a></div>
-    <div class="menu">
-      <a href="./aboutUs.html">About us</a>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      <a href="./terms-of-service.html">Terms of Service</a>
-      <a href="./support.html">Help Center </a>
+
+    <div class="nav-center">
+      <div class="menu" id="menu">
+        <a href="./aboutUs.html">About us</a>
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./terms-of-service.html">Terms of Service</a>
+        <a href="./support.html">Help Center</a>
+      </div>
     </div>
 
-    <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+    <a class="app-btn desktop" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 
   <section class="about-section">
-    <di class="about-textBox">
+    <div class="about-textBox">
       <h2>About Us</h2>
       <p>Roamly was born from a love of travel—and the reality that planning can drain the joy out of it. We’ve all been there: excited to explore, overwhelmed by the details.</p>
-      <br
       <p>So we built Roamly to take the pressure off. With AI-powered suggestions, curated templates, and fully customizable itineraries, you get a smart starting point that turns planning from stressful to effortless. You shape the rest.</p>
       <p class="signature">Made with love 🧡,<br>The Roamly Team</p>
     </div>
   </section>
+
   <p class="asset-credit">
     Illustration by <a href="https://www.freepik.com" target="_blank">Freepik</a>
   </p>
@@ -317,9 +370,9 @@
         <p>Every journey is effortless, every discovery personal, and every adventure a story you craft, guided by your curiosity and our intelligent tools.</p>
       </div>
       <div class="mission">
-          <h3>Our Mission</h3>
-           <p>Roamly gives travelers the freedom to design trips their way, blending AI-powered guidance with full flexibility to make every journey effortless and uniquely theirs.</p>
-    </div>
+        <h3>Our Mission</h3>
+        <p>Roamly gives travelers the freedom to design trips their way, blending AI-powered guidance with full flexibility to make every journey effortless and uniquely theirs.</p>
+      </div>
     </div>
   </section>
 
@@ -350,10 +403,16 @@
     </div>
   </section>
 
-
-
-  <!-- JS for automatic active nav highlighting -->
   <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+
+    // Highlight active nav link
     const currentPage = window.location.pathname.split("/").pop();
     const navLinks = document.querySelectorAll(".menu a");
 

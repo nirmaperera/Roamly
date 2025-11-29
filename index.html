@@ -14,18 +14,21 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    body {
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
     nav {
       width: 100%;
       background: #ffffff;
       padding: 20px 40px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #eaeaea;
       position: sticky;
       top: 0;
-      overflow: hidden;
-      z-index: 1;
+      z-index: 1000;
     }
 
     .logo a {
@@ -34,55 +37,58 @@
       letter-spacing: -0.5px;
       color: #E27606;
       text-decoration: none;
-        position: relative;
-        overflow: hidden;
+    }
+
+    /* Center links on desktop */
+    .nav-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
     }
 
     .menu {
       display: flex;
       gap: 40px;
+      transition: right 0.3s ease;
     }
 
     .menu a {
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    color: black
+      text-decoration: none;
+      color: black;
+      position: relative;
+      overflow: hidden;
     }
 
     .menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    background-color: #177D83;
-    width: 0%;
-    transition: width 0.3s ease;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #177D83;
+      width: 0%;
+      transition: width 0.3s ease;
     }
 
     .menu a:hover::after {
-    width: 100%;
-    animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+      width: 100%;
+      animation: heartbeat 1.5s ease-in-out 0.3s infinite;
     }
 
-    @keyframes heartbeat116 {
-    0%, 100% {
-        width: 100%;
-    }
-    50% {
-        width: 60%;
-    }
+    @keyframes heartbeat {
+      0%,100% { width: 100%; }
+      50% { width: 60%; }
     }
 
+    /* CTA button */
     .app-btn {
       padding: 10px 18px;
       background: #000;
       color: #fff;
       border-radius: 8px;
       font-size: 15px;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
       transition: opacity 0.2s ease;
     }
 
@@ -91,115 +97,136 @@
     }
 
     /* HERO / BANNER */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 85vh;
-  /*
-  Photo credit:
-  Hero image: "hero.jpg"
-  Photographer: Clément Proust
-  Source: Pexels (https://www.pexels.com/@clmentproust/)
-*/
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./Assets/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 0 6vw;
+      color: white;
+    }
 
-  background-image: url('Assets/hero.jpg'); /* Replace with real image URL */
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 0 20px 20px;
-  display: flex;
-  align-items: center;
-  padding: 0 6vw;
-  color: white;
-}
+    .hero-content {
+      max-width: 600px;
+    }
 
-.hero-content {
-  max-width: 600px;
-}
+    .hero h1 {
+      font-size: 68px;
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
 
-.hero h1 {
-  font-size: 68px;
-  font-weight: 700;
-  line-height: 1.05;
-  margin-bottom: 20px;
-}
+    .hero p {
+      font-size: 20px;
+      font-weight: 400;
+      opacity: 0.9;
+      margin-bottom: 35px;
+    }
 
-.hero p {
-  font-size: 20px;
-  font-weight: 400;
-  opacity: 0.9;
-  margin-bottom: 35px;
-}
+    .cta-btn {
+      display: inline-block;
+      padding: 15px 32px;
+      border-radius: 30px;
+      background: #fff;
+      color: #177D83;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
 
-.cta-btn {
-  display: inline-block;
-  padding: 15px 32px;
-  border-radius: 30px;
-  background: #fff;
-  color: #177D83;
-  font-size: 18px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
+    .cta-btn:hover {
+      opacity: 0.8;
+    }
 
-.cta-btn:hover {
-  opacity: 0.8;
-}
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1100;
+    }
 
-/* SCROLL BUTTON */
-.scroll-btn {
-  position: absolute;
-  bottom: 28px;
-  right: 32px;
-  background: rgba(255,255,255,0.35);
-  backdrop-filter: blur(10px);
-  color: #000;
-  padding: 14px 26px;
-  border-radius: 24px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  transition: background 0.2s ease;
-}
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: #000;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
 
-.scroll-btn:hover {
-  background: rgba(255,255,255,0.55);
-}
-
-/* RESPONSIVE */
-@media(max-width: 850px) {
-  .hero {
-    text-align: center;
-    justify-content: center;
-    padding: 0 5vw;
-  }
-
-  .hero h1 {
-    font-size: 44px;
-  }
-
-  .cta-btn {
-    margin: 0 auto;
-  }
-
-  .scroll-btn {
-    bottom: 18px;
-    right: 50%;
-    transform: translateX(50%);
-    padding: 12px 22px;
-  }
-}
-
-
-    /* Mobile responsive */
-    @media(max-width: 850px) {
-      .menu {
-        display: none; /* hide desktop menu */
+    /* MOBILE RESPONSIVE */
+    @media(max-width:850px){
+      /* Hamburger appears */
+      .hamburger {
+        display: flex;
       }
-      .app-btn {
-        margin-left: auto;
+
+      /* Hide desktop CTA button */
+      .app-btn.desktop {
+        display: none;
+      }
+
+      /* Menu slides in from right */
+      .menu {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        padding: 80px 20px 20px 20px;
+        gap: 20px;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      }
+
+      .menu.active {
+        right: 0;
+      }
+
+      .menu a.app-btn.mobile {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Hero adjustments */
+      .hero {
+        text-align: center;
+        justify-content: center;
+        padding: 0 5vw;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .cta-btn {
+        margin: 0 auto;
       }
     }
+
+    /* Hamburger toggle to X */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
   </style>
 </head>
 <body>
@@ -207,30 +234,41 @@
   <nav>
     <div class="logo"><a href="./index.html">Roamly</a></div>
 
-    <div class="menu">
-      <a href="./aboutUs.html">About us</a>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      <a href="./terms-of-service.html">Terms of Service</a>
-      <a href="./support.html">Help Center </a>
+    <div class="nav-center">
+      <div class="menu" id="menu">
+        <a href="./aboutUs.html">About us</a>
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./terms-of-service.html">Terms of Service</a>
+        <a href="./support.html">Help Center</a>
+      </div>
     </div>
 
-    <a class="app-btn" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+    <a class="app-btn desktop" href="https://apps.apple.com" target="_blank">Download on App Store</a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 
   <section class="hero">
     <div class="hero-content">
       <h1>Plan Smart. Roam Freely</h1>
       <p>Redefining travel planning with AI — faster, smarter, and fully in your control.</p>
-      <a  href="https://apps.apple.com" target="_blank"class="cta-btn">Let's roam!</a>
+      <a href="https://apps.apple.com" target="_blank" class="cta-btn">Let's roam!</a>
     </div>
-
-    <!-- <a href="#next" class="scroll-btn">↓ Scroll down</a> -->
   </section>
 
-  <!-- <footer style="text-align:center; font-size:12px; opacity:0.7; margin-top:40px;">
-    Banner image: <a href="https://www.pexels.com/photo/festvagtind-henningsvaer-randonnee-voyage-tourisme-lofoten-19139418/" target="_blank" rel="noopener noreferrer">
-      Photo by Clément Proust on Pexels
-    </a>
-  </footer> -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active'); // toggles X animation
+    });
+  </script>
+
 </body>
 </html>
