@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About us</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="../Assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./Assets/favicon.ico" type="image/x-icon">
   <script src="https://kit.fontawesome.com/5e0213720f.js" crossorigin="anonymous"></script>
   <style>
     * {
@@ -101,7 +101,7 @@
     }
 
     .about-section {
-      background: url('../Assets/plane.png') no-repeat center top/cover;
+      background: url('./Assets/plane.png') no-repeat center top/cover;
       height: 750px;
     }
 
@@ -233,6 +233,18 @@
       line-height: 1.4;
     }
 
+    .asset-credit {
+    text-align: right;
+    font-size: 11px;
+    opacity: 0.6;
+    margin: 8px 20px 0 0;
+  }
+
+  .asset-credit a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
     @media (max-width: 768px) {
       .vision-mission {
         flex-direction: column;
@@ -273,7 +285,7 @@
 <body>
 
   <nav>
-    <div class="logo"><a href=".index.html">Roamly</a></div>
+    <div class="logo"><a href="./index.html">Roamly</a></div>
     <div class="menu">
       <a href="./aboutUs.html">About us</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
@@ -293,9 +305,12 @@
       <p class="signature">Made with love 🧡,<br>The Roamly Team</p>
     </div>
   </section>
+  <p class="asset-credit">
+    Illustration by <a href="https://www.freepik.com" target="_blank">Freepik</a>
+  </p>
 
   <section class="vision-mission">
-    <img src="../Assets/desk.jpg" alt="Travel essentials">
+    <img src="./Assets/desk.jpg" alt="Travel essentials">
     <div class="text">
       <div class="vision">
         <h3>Our Vision</h3>
