@@ -7,21 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="./Assets/favicon.ico" type="image/x-icon">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      overflow-x: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { overflow-x: hidden; }
 
     /* NAVBAR */
     nav {
       width: 100%;
-      background: #ffffff;
+      background: #fff;
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -34,148 +26,40 @@
     .logo a {
       font-size: 26px;
       font-weight: 700;
-      letter-spacing: -0.5px;
       color: #E27606;
       text-decoration: none;
     }
 
-    /* Center links on desktop */
-    .nav-center {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-
-    .menu {
-      display: flex;
-      gap: 40px;
-      transition: right 0.3s ease;
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: black;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .nav-center { flex: 1; display: flex; justify-content: center; }
+    .menu { display: flex; gap: 40px; transition: right 0.3s ease; }
+    .menu a { text-decoration: none; color: black; position: relative; }
     .menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      background-color: #177D83;
-      width: 0%;
-      transition: width 0.3s ease;
+      content: ""; position: absolute; left: 0; bottom: 0; height: 2px;
+      background-color: #177D83; width: 0%; transition: width 0.3s ease;
     }
+    .menu a:hover::after { width: 100%; animation: heartbeat 1.5s ease-in-out 0.3s infinite; }
+    @keyframes heartbeat { 0%,100% { width:100%; } 50% { width:60%; } }
 
-    .menu a:hover::after {
-      width: 100%;
-      animation: heartbeat 1.5s ease-in-out 0.3s infinite;
-    }
+    .app-btn { padding: 10px 18px; background: #000; color: #fff; border-radius: 8px; font-weight:600; text-decoration:none; transition: opacity 0.2s ease; }
+    .app-btn:hover { opacity:0.8; }
 
-    @keyframes heartbeat {
-      0%,100% { width: 100%; }
-      50% { width: 60%; }
-    }
+    /* HERO */
+    .hero { position: relative; width: 100%; height: 85vh; background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('./Assets/hero.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; padding: 0 6vw; color: white; }
+    .hero-content { max-width: 600px; }
+    .hero h1 { font-size: 68px; font-weight:700; line-height:1.05; margin-bottom:20px; }
+    .hero p { font-size:20px; opacity:0.9; margin-bottom:35px; }
+    .cta-btn { display:inline-block; padding:15px 32px; border-radius:30px; background:#fff; color:#177D83; font-size:18px; font-weight:600; text-decoration:none; transition: opacity 0.2s ease; }
+    .cta-btn:hover { opacity:0.8; }
 
-    /* CTA button */
-    .app-btn {
-      padding: 10px 18px;
-      background: #000;
-      color: #fff;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
+    /* HAMBURGER */
+    .hamburger { display:none; flex-direction: column; justify-content: space-between; width:25px; height:20px; cursor:pointer; z-index:1100; }
+    .hamburger span { display:block; height:3px; background:#000; border-radius:2px; transition: all 0.3s ease; }
 
-    .app-btn:hover {
-      opacity: 0.8;
-    }
-
-    /* HERO / BANNER */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 85vh;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./Assets/hero.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      padding: 0 6vw;
-      color: white;
-    }
-
-    .hero-content {
-      max-width: 600px;
-    }
-
-    .hero h1 {
-      font-size: 68px;
-      font-weight: 700;
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      font-weight: 400;
-      opacity: 0.9;
-      margin-bottom: 35px;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      padding: 15px 32px;
-      border-radius: 30px;
-      background: #fff;
-      color: #177D83;
-      font-size: 18px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .cta-btn:hover {
-      opacity: 0.8;
-    }
-
-    /* Hamburger button */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 25px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1100;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 3px;
-      background: #000;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* MOBILE RESPONSIVE */
+    /* MOBILE */
     @media(max-width:850px){
-      /* Hamburger appears */
-      .hamburger {
-        display: flex;
-      }
+      .hamburger { display:flex; }
+      .app-btn.desktop { display:none; }
 
-      /* Hide desktop CTA button */
-      .app-btn.desktop {
-        display: none;
-      }
-
-      /* Menu slides in from right */
       .menu {
         flex-direction: column;
         position: fixed;
@@ -183,50 +67,35 @@
         right: -100%;
         width: 250px;
         height: 100vh;
-        background: #fff;
+        background: rgba(255,255,255,0.95);
         padding: 80px 20px 20px 20px;
         gap: 20px;
         box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        z-index: 1001;
       }
 
-      .menu.active {
-        right: 0;
-      }
+      .menu.active { right: 0; }
 
-      .menu a.app-btn.mobile {
-        width: 100%;
-        text-align: center;
-      }
+      .menu a.app-btn.mobile { width:100%; text-align:center; }
 
-      /* Hero adjustments */
-      .hero {
-        text-align: center;
-        justify-content: center;
-        padding: 0 5vw;
-      }
-
-      .hero h1 {
-        font-size: 44px;
-      }
-
-      .cta-btn {
-        margin: 0 auto;
-      }
+      .hero { text-align:center; justify-content:center; padding:0 5vw; }
+      .hero h1 { font-size:44px; }
+      .cta-btn { margin:0 auto; }
     }
 
-    /* Hamburger toggle to X */
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
+    /* Hamburger X animation */
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity:0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
+    /* OVERLAY */
+    #overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.4);
+      opacity:0; visibility:hidden; transition: opacity 0.3s ease;
+      z-index:900;
     }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
+    #overlay.active { opacity:1; visibility:visible; }
   </style>
 </head>
 <body>
@@ -252,6 +121,9 @@
     </div>
   </nav>
 
+  <!-- Overlay -->
+  <div id="overlay"></div>
+
   <section class="hero">
     <div class="hero-content">
       <h1>Plan Smart. Roam Freely</h1>
@@ -263,10 +135,19 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
 
     hamburger.addEventListener('click', () => {
       menu.classList.toggle('active');
-      hamburger.classList.toggle('active'); // toggles X animation
+      hamburger.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    // Close menu if overlay is clicked
+    overlay.addEventListener('click', () => {
+      menu.classList.remove('active');
+      hamburger.classList.remove('active');
+      overlay.classList.remove('active');
     });
   </script>
 

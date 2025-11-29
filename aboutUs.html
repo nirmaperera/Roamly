@@ -8,16 +8,8 @@
   <link rel="icon" href="./Assets/favicon.ico" type="image/x-icon">
   <script src="https://kit.fontawesome.com/5e0213720f.js" crossorigin="anonymous"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      overflow-x: hidden;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+    body { overflow-x: hidden; }
 
     /* NAVBAR */
     nav {
@@ -31,267 +23,70 @@
       top: 0;
       z-index: 1000;
     }
+    .logo a { font-size:26px; font-weight:700; color:#E27606; text-decoration:none; }
+    .nav-center { flex:1; display:flex; justify-content:center; }
+    .menu { display:flex; gap:40px; transition:right 0.3s ease, background 0.3s ease; }
+    .menu a { text-decoration:none; color:black; position:relative; overflow:hidden; }
+    .menu a::after { content:""; position:absolute; left:0; bottom:0; height:2px; background-color:#177D83; width:0; transition:width 0.3s ease; }
+    .menu a:hover::after { width:100%; animation: heartbeat 1.5s ease-in-out 0.3s infinite; }
+    @keyframes heartbeat { 0%,100%{width:100%}50%{width:60%} }
+    .menu a.active { font-weight:500; color:#177D83; }
+    .menu a.active::after { width:100%; }
 
-    .logo a {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      color: #E27606;
-      text-decoration: none;
-    }
+    .app-btn { padding:10px 18px; background:#000; color:#fff; border-radius:8px; font-weight:600; text-decoration:none; transition:opacity 0.2s ease; }
+    .app-btn:hover { opacity:0.8; }
 
-    /* Center links on desktop */
-    .nav-center {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+    /* HAMBURGER */
+    .hamburger { display:none; flex-direction:column; justify-content:space-between; width:25px; height:20px; cursor:pointer; z-index:1100; }
+    .hamburger span { display:block; height:3px; background:#000; border-radius:2px; transition:all 0.3s ease; }
 
-    .menu {
-      display: flex;
-      gap: 40px;
-      transition: right 0.3s ease;
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: black;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      background-color: #177D83;
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .menu a:hover::after {
-      width: 100%;
-      animation: heartbeat 1.5s ease-in-out 0.3s infinite;
-    }
-
-    @keyframes heartbeat {
-      0%,100% { width: 100%; }
-      50% { width: 60%; }
-    }
-
-    /* Active nav item */
-    .menu a.active {
-      font-weight: 500;
-      color: #177D83;
-    }
-    .menu a.active::after {
-      width: 100%;
-    }
-
-    /* CTA button */
-    .app-btn {
-      padding: 10px 18px;
-      background: #000;
-      color: #fff;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .app-btn:hover {
-      opacity: 0.8;
-    }
-
-    /* Hamburger button */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 25px;
-      height: 20px;
-      cursor: pointer;
-      z-index: 1100;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 3px;
-      background: #000;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* HERO / ABOUT SECTION STYLES */
+    /* HERO / ABOUT */
     .about-section {
       background: url('./Assets/plane.png') no-repeat center top/cover;
-      height: 750px;
-    }
-
-    .about-textBox{
-      position: relative;
-      top: 220px;
+      min-height:750px;
       display: flex;
-      flex-direction: column;
-      max-width: 600px;
-      padding: 30px;
-      margin: 0 50px;
-      text-align: left;
-      color: #404040;
-      background-color: rgba(255, 255, 255, 0.4);
-      border-radius: 20px;
-    }
-
-    .about-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .about-section p {
-      font-size: 1rem;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-
-    .about-section .signature {
-      margin-top: 20px;
-      font-style: italic;
-    }
-
-    .vision-mission {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      padding: 60px 20px;
-      justify-content: center;
+      justify-content: flex-start; /* instead of center */
       align-items: flex-start;
+      padding-left: 50px; /* optional, to add spacing from the left edge */
     }
-
-    .vision-mission img {
-      max-width: 500px;
-      border-radius: 8px;
+    .about-textBox {
+      margin-top:220px;
+      max-width:600px;
+      padding:30px;
+      text-align:left;
+      color:#404040;
+      background-color: rgba(255,255,255,0.3);
+      border-radius:20px;
     }
+    .about-textBox h2 { font-size:2.5rem; margin-bottom:20px; }
+    .about-textBox p { font-size:1rem; line-height:1.6; margin-bottom:15px; }
+    .about-textBox .signature { margin-top:20px; font-style:italic; }
 
-    .vision-mission .text {
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      height: 500px;
-      width: max-content;
-      color: #404040;
-    }
+    .vision-mission { display:flex; flex-wrap:wrap; gap:40px; padding:60px 20px; justify-content:center; align-items:flex-start; }
+    .vision-mission img { max-width:500px; border-radius:8px; }
+    .vision-mission .text { max-width:400px; display:flex; flex-direction:column; justify-content:space-evenly; height:500px; width:max-content; color:#404040; }
+    .vision-mission .text h3 { color:#0f585c; margin-bottom:10px; }
+    .vision-mission .text p { line-height:1.6; }
 
-    .vision-mission .text h3 {
-      color: #0f585c;
-      margin-bottom: 10px;
-    }
+    .values-section { background-color:#E8F2F3; padding:40px 20px; text-align:center; }
+    .values-section h3 { font-size:2rem; margin-bottom:20px; color:#404040; }
+    .values-section p { margin-bottom:40px; max-width:600px; margin-left:auto; margin-right:auto; }
+    .values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
+    .value-card { background-color:#fff; border-radius:12px; padding:20px; text-align:left; box-shadow:0 4px 6px rgba(0,0,0,0.05); transition:transform 0.3s ease; }
+    .value-card:hover { transform:translateY(-5px); }
+    .value-card i { font-size:2rem; color:#0f585c; margin-bottom:15px; display:inline-block; }
+    .value-card h4 { margin-bottom:10px; font-size:1.2rem; color:#404040; }
+    .value-card p { font-size:0.95rem; line-height:1.4; }
 
-    .vision-mission .text p {
-      line-height: 1.6;
-    }
+    .asset-credit { text-align:right; font-size:11px; opacity:0.6; margin:8px 20px 0 0; }
+    .asset-credit a { color:inherit; text-decoration:underline; }
+    footer { text-align:center; font-size:13px; padding:20px; opacity:0.6; margin-top:50px; }
 
-    .values-section {
-      background-color: #E8F2F3;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .values-section h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #404040;
-    }
-
-    .values-section p {
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .value-card {
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: left;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-
-    .value-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .value-card i {
-      font-size: 2rem;
-      color: #0f585c;
-      margin-bottom: 15px;
-      display: inline-block;
-    }
-
-    .value-card h4 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-      color: #404040;
-    }
-
-    .value-card p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    .asset-credit {
-      text-align: right;
-      font-size: 11px;
-      opacity: 0.6;
-      margin: 8px 20px 0 0;
-    }
-
-    .asset-credit a {
-      color: inherit;
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 13px;
-      padding: 20px;
-      opacity: 0.6;
-      margin-top: 50px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .vision-mission {
-        flex-direction: column;
-        align-items: center;
-      }
-      .vision-mission img, .vision-mission .text {
-        max-width: 100%;
-      }
-    }
-
+    /* MOBILE RESPONSIVE */
     @media(max-width:850px){
-      .hamburger {
-        display: flex;
-      }
-
-      .app-btn.desktop {
-        display: none;
-      }
-
+      .hamburger { display:flex; }
+      .app-btn.desktop { display:none; }
+      .about-section{ padding-left: 0;}
       .menu {
         flex-direction: column;
         position: fixed;
@@ -299,38 +94,37 @@
         right: -100%;
         width: 250px;
         height: 100vh;
-        background: #fff;
+        background: rgba(255,255,255,0.95);
         padding: 80px 20px 20px 20px;
         gap: 20px;
         box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        z-index:1001;
       }
+      .menu.active { right:0; }
 
-      .menu.active {
-        right: 0;
-      }
-
-      .menu a.app-btn.mobile {
-        width: 100%;
-        text-align: center;
-      }
+      .menu a.app-btn.mobile { width:100%; text-align:center; }
+      .about-textBox{ margin-top: 100px;}
+      .vision-mission { flex-direction:column; align-items:center; }
+      .vision-mission img, .vision-mission .text { max-width:100%; }
     }
 
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
+    .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity:0; }
+    .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+    /* OVERLAY */
+    #overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.4); opacity:0; visibility:hidden; transition:opacity 0.3s ease;
+      z-index:900;
     }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
+    #overlay.active { opacity:1; visibility:visible; }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="logo"><a href="./index.html">Roamly</a></div>
-
     <div class="nav-center">
       <div class="menu" id="menu">
         <a href="./aboutUs.html">About us</a>
@@ -339,15 +133,16 @@
         <a href="./support.html">Help Center</a>
       </div>
     </div>
-
     <a class="app-btn desktop" href="https://apps.apple.com" target="_blank">Download on App Store</a>
-
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </nav>
+
+  <!-- Overlay -->
+  <div id="overlay"></div>
 
   <section class="about-section">
     <div class="about-textBox">
@@ -380,45 +175,36 @@
     <h3>Our Values</h3>
     <p>We center our company around these four core values:</p>
     <div class="values-grid">
-      <div class="value-card">
-        <i class="fas fa-plane"></i>
-        <h4>Freedom to Explore</h4>
-        <p>Every traveler should feel empowered to design trips their way, with full creative control over every detail.</p>
-      </div>
-      <div class="value-card">
-        <i class="fas fa-pencil-alt"></i>
-        <h4>Effortless Planning</h4>
-        <p>Simplifying travel planning through intelligent tools, so users can focus on discovery and enjoyment rather than logistics.</p>
-      </div>
-      <div class="value-card">
-        <i class="fas fa-hiking"></i>
-        <h4>Personalized Experiences</h4>
-        <p>Every journey should reflect the traveler’s curiosity, style, and interests, making each trip truly unique.</p>
-      </div>
-      <div class="value-card">
-        <i class="fas fa-robot"></i>
-        <h4>Inspiration Meets Innovation</h4>
-        <p>Combining AI-powered guidance with human creativity to inspire meaningful, memorable adventures.</p>
-      </div>
+      <div class="value-card"><i class="fas fa-plane"></i><h4>Freedom to Explore</h4><p>Every traveler should feel empowered to design trips their way, with full creative control over every detail.</p></div>
+      <div class="value-card"><i class="fas fa-pencil-alt"></i><h4>Effortless Planning</h4><p>Simplifying travel planning through intelligent tools, so users can focus on discovery and enjoyment rather than logistics.</p></div>
+      <div class="value-card"><i class="fas fa-hiking"></i><h4>Personalized Experiences</h4><p>Every journey should reflect the traveler’s curiosity, style, and interests, making each trip truly unique.</p></div>
+      <div class="value-card"><i class="fas fa-robot"></i><h4>Inspiration Meets Innovation</h4><p>Combining AI-powered guidance with human creativity to inspire meaningful, memorable adventures.</p></div>
     </div>
   </section>
+
+  <footer>© 2025 Roamly. All rights reserved.</footer>
 
   <script>
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
 
     hamburger.addEventListener('click', () => {
       menu.classList.toggle('active');
       hamburger.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      menu.classList.remove('active');
+      hamburger.classList.remove('active');
+      overlay.classList.remove('active');
     });
 
     // Highlight active nav link
     const currentPage = window.location.pathname.split("/").pop();
-    const navLinks = document.querySelectorAll(".menu a");
-
-    navLinks.forEach(link => {
-      const linkPage = link.getAttribute("href").split("/").pop();
-      if(linkPage === currentPage) {
+    document.querySelectorAll(".menu a").forEach(link => {
+      if(link.getAttribute("href").split("/").pop() === currentPage) {
         link.classList.add("active");
       }
     });
